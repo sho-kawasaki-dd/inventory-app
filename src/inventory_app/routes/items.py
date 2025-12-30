@@ -26,7 +26,14 @@ def create_item():
     data = ItemCreate(**payload)
 
     s = get_session()
-    item = Item(sku=data.sku, name=data.name, unit=data.unit)
+    item = Item(
+        sku=data.sku,
+        name=data.name,
+        unit=data.unit,
+        category=data.category,
+        usage=data.usage,
+        manufacturer=data.manufacturer
+    )
     s.add(item)
     s.flush()
 

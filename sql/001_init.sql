@@ -8,6 +8,9 @@ CREATE TABLE IF NOT EXISTS items (
   sku TEXT UNIQUE,
   name TEXT NOT NULL,
   unit TEXT NOT NULL DEFAULT 'pcs',
+  category TEXT,
+  usage TEXT,
+  manufacturer TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );

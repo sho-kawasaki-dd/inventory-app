@@ -9,6 +9,9 @@ class ItemCreate(BaseModel):
     sku: str | None = None
     name: str
     unit: str = "pcs"
+    category: str | None = None
+    usage: str | None = None
+    manufacturer: str | None = None
 
 
 class ItemOut(BaseModel):
@@ -18,3 +21,6 @@ class ItemOut(BaseModel):
     sku: str | None
     name: str
     unit: str
+    category: str | None
+    usage: str | None
+    manufacturer: str | None

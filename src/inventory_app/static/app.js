@@ -14,7 +14,7 @@ window.InventoryApp = (() => {
     tbody.innerHTML = '';
     for (const it of items) {
       const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${it.id}</td><td>${it.sku ?? ''}</td><td>${it.name}</td><td>${it.unit}</td>`;
+      tr.innerHTML = `<td>${it.id}</td><td>${it.sku ?? ''}</td><td>${it.name}</td><td>${it.category ?? ''}</td><td>${it.usage ?? ''}</td><td>${it.manufacturer ?? ''}</td><td>${it.unit}</td>`;
       tbody.appendChild(tr);
     }
   }

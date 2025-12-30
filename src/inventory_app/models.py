@@ -17,6 +17,9 @@ class Item(Base):
     sku: Mapped[str | None] = mapped_column(String, unique=True, nullable=True)
     name: Mapped[str] = mapped_column(String, nullable=False)
     unit: Mapped[str] = mapped_column(String, nullable=False, default="pcs")
+    category: Mapped[str | None] = mapped_column(Text, nullable=True)
+    usage: Mapped[str | None] = mapped_column(Text, nullable=True)
+    manufacturer: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
