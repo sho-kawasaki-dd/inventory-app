@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Stocktake #{{ stocktake_id }}</h1>
+<p>
+  <a class="btn" href="/stocktakes">Back</a>
+  <button class="btn danger" id="confirm-btn" type="button">Confirm (apply counted quantities)</button>
+  <span class="muted" id="meta"></span>
+</p>
+
+<table id="stocktake-lines-table">
+  <thead>
+    <tr>
+      <th data-sort="shelf">Shelf</th>
+      <th>Item</th>
+      <th>SKU</th>
+      <th>Expected</th>
+      <th>Counted</th>
+      <th>Unit</th>
+      <th>Shelf note</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+{% endblock %}
+{% block scripts %}
+<script src="/static/stocktake.js"></script>
+<script>
+  window.StocktakePage.init({{ stocktake_id }});
+</script>
+{% endblock %}

@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "inventory-management-app"
+version = "0.1.0"
+description = "Flask + SQLAlchemy + PostgreSQL inventory management app scaffold"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "sho-kawasaki-dd"}]
+dependencies = [
+  "Flask>=3.0",
+  "SQLAlchemy>=2.0",
+  "psycopg[binary]>=3.1",
+  "alembic>=1.13",
+  "python-dotenv>=1.0",
+  "pydantic>=2.6",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.6",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inventory</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; }
+      nav a { margin-right: 12px; }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border: 1px solid #ddd; padding: 8px; }
+      th { background: #f7f7f7; text-align: left; }
+      .muted { color: #666; }
+      .diff { background: #fff2f2; }
+      .ok { color: #0a6; }
+      .btn { padding: 6px 10px; border: 1px solid #ccc; background: #fff; cursor: pointer; }
+      .btn.primary { border-color: #36c; }
+      .btn.danger { border-color: #c33; }
+      input[type="text"], input[type="number"] { padding: 6px; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/stocks">Stocks</a>
+      <a href="/items">Items</a>
+      <a href="/stocktakes">Stocktakes</a>
+      <span class="muted">(scaffold)</span>
+    </nav>
+    <hr />
+    {% block content %}{% endblock %}
+
+    <script src="/static/app.js"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
