@@ -39,6 +39,7 @@ window.InventoryApp = (() => {
     }
   }
 
+  // Stocktake list includes confirm button + diff_count
   async function loadStocktakes() {
     const res = await api(`${API_BASE}/stocktakes`);
     const rows = await res.json();
