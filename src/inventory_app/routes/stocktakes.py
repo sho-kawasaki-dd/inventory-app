@@ -9,6 +9,7 @@ from inventory_app.db import get_session
 from inventory_app.http import error, ok
 from inventory_app.models import Item, Stock, Stocktake, StocktakeLine
 from inventory_app.schemas.stocktakes import StocktakeCreate
+from inventory_app.services.inventory import InsufficientStockError, apply_inventory_delta
 
 bp = Blueprint("stocktakes", __name__)
 
@@ -176,8 +177,6 @@ def update_stocktake_line(line_id: int):
 @bp.post("/stocktakes/<uuid:stocktake_id>/confirm")
 def confirm_stocktake(stocktake_id: UUID):
     """Apply counted quantities to stocks using transaction-based approach."""
-    from inventory_app.services.inventory import apply_inventory_delta, InsufficientStockError
-    
     s = get_session()
     st = s.get(Stocktake, stocktake_id)
     if not st:

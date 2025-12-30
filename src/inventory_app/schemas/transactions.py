@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class TransactionRequest(BaseModel):
@@ -14,9 +14,12 @@ class AdjustmentRequest(BaseModel):
     delta: float = Field(description="Delta quantity (positive or negative, but not zero)")
     reason: str | None = Field(None, description="Optional reason for the adjustment")
     
-    def model_post_init(self, __context) -> None:
-        if self.delta == 0:
+    @field_validator("delta")
+    @classmethod
+    def validate_delta_nonzero(cls, v: float) -> float:
+        if v == 0:
             raise ValueError("Delta cannot be zero")
+        return v
 
 
 class TransactionResponse(BaseModel):
